@@ -1,5 +1,10 @@
 language: c
 
+addons:
+  apt:
+    packages:
+      - ruby
+
 before_install:
   - test "$TRAVIS_OS_NAME" = 'linux' && sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
   - test "$TRAVIS_OS_NAME" = 'linux' && export PATH="$PATH:$HOME/.linuxbrew/bin/"

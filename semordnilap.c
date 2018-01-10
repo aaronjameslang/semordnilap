@@ -7,8 +7,9 @@
 void strrev(const char* const src, char* const dest)
 {
     const int len = strlen(src);
+    int i = 0;
 
-      for (int i = 0; i < len; i += 1)
+      for (; i < len; i += 1)
       {
           dest[len-i-1] = src[i];
       }

@@ -2,6 +2,8 @@ language: c
 
 addons:
   apt:
+    sources:
+      - sourceline: deb http://archive.ubuntu.com/ubuntu xenial main
     packages:
       - ruby
 

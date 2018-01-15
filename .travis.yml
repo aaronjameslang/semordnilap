@@ -18,3 +18,7 @@ script: cmake . && make
 compiler:
   - clang
   - gcc
+
+os:
+  - linux
+  - osx

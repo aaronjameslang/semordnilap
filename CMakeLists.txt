@@ -13,3 +13,5 @@ add_custom_command(OUTPUT tags
                    COMMAND ctags *.c
                    DEPENDS *.c
                   )
+
+add_custom_target(test_target ALL roundup)

@@ -6,3 +6,10 @@ target_link_libraries(semordnilap enchant)
 
 enable_testing()
 add_test(test roundup)
+
+# Target should be called 'tags' but doesn't work
+add_custom_target(dev ALL DEPENDS tags)
+add_custom_command(OUTPUT tags
+                   COMMAND ctags *.c
+                   DEPENDS *.c
+                  )

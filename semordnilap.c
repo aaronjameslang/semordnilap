@@ -27,11 +27,11 @@ int spell_check(const char *const word, const char *const language) {
 }
 
 int main(int argc, char **argv) {
-  (void)argc;
   /* TODO Spell check word? */
   const char *const word = argv[1];
   const char *const drow = strrev(word);
   const int check = spell_check(drow, "en");
+  (void)argc;
   printf("%s -> %s\n", word, drow);
   exit(check);
 }

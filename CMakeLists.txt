@@ -4,6 +4,16 @@ include_directories(/usr/include/enchant)
 add_executable(semordnilap semordnilap.c)
 target_link_libraries(semordnilap enchant)
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic-errors")
+
+if(NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ansi")
+endif()
+
 enable_testing()
 add_test(test roundup)
 

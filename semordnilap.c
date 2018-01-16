@@ -4,8 +4,9 @@
 
 #include <enchant.h>
 
-void strrev(const char *const src, char *const dest) {
+char *strrev(const char *const src) {
   const int len = strlen(src);
+  char *const dest = malloc(len + 1);
   int i = 0;
 
   for (; i < len; i += 1) {
@@ -13,6 +14,8 @@ void strrev(const char *const src, char *const dest) {
   }
 
   dest[len] = '\0';
+
+  return dest;
 }
 
 int spell_check(const char *const word, const char *const language) {
@@ -24,10 +27,11 @@ int spell_check(const char *const word, const char *const language) {
 }
 
 int main(int argc, char **argv) {
-  const char *const word = argv[1]; // Should I spell check this?
-  char *const drow = malloc(strlen(word) + 1);
-  strrev(word, drow);
+  /* TODO Spell check word? */
+  const char *const word = argv[1];
+  const char *const drow = strrev(word);
   const int check = spell_check(drow, "en");
+  (void)argc;
   printf("%s -> %s\n", word, drow);
   exit(check);
 }

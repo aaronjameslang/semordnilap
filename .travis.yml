@@ -2,18 +2,10 @@ language: c
 
 addons:
   apt:
-    sources:
-      - sourceline: deb http://archive.ubuntu.com/ubuntu xenial main
     packages:
       - libenchant-dev
-      - ruby
 
-before_install:
-  - test "$TRAVIS_OS_NAME" = 'linux' && sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-  - test "$TRAVIS_OS_NAME" = 'linux' && export PATH="$PATH:$HOME/.linuxbrew/bin/"
-  - brew install roundup
-
-script: cmake . && make
+script: mkdir build && cd build && cmake .. && make
 
 compiler:
   - clang

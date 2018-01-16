@@ -1,0 +1,24 @@
+#! /bin/sh
+set -eu
+
+semordnilap="$1"
+
+out="$(./semordnilap stressed)"
+exit_code="$?"
+test "$out" = 'stressed -> desserts'
+test "$exit_code" -eq 0
+
+out="$(./semordnilap desserts)"
+exit_code="$?"
+test "$out" = 'desserts -> stressed'
+test "$exit_code" -eq 0
+
+out="$(./semordnilap elppa)"
+exit_code="$?"
+test "$out" = 'elppa -> apple'
+test "$exit_code" -eq 0
+
+exit_code=0
+out="$(./semordnilap apple)" || exit_code="$?"
+test "$out" = 'apple -> elppa'
+test "$exit_code" -eq 1

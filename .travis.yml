@@ -5,7 +5,14 @@ addons:
     packages:
       - libenchant-dev
 
-script: mkdir build && cd build && cmake .. && make
+script:
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - make test
+  - make install
+  - ../test semordnilap # Check installed binary
 
 compiler:
   - clang

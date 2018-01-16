@@ -4,7 +4,7 @@
 
 #include <enchant.h>
 
-const char *const strrev(const char *const src) {
+char *strrev(const char *const src) {
   const int len = strlen(src);
   char *const dest = malloc(len + 1);
   int i = 0;
@@ -27,6 +27,7 @@ int spell_check(const char *const word, const char *const language) {
 }
 
 int main(int argc, char **argv) {
+  (void)argc;
   /* TODO Spell check word? */
   const char *const word = argv[1];
   const char *const drow = strrev(word);

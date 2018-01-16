@@ -15,3 +15,4 @@ add_custom_command(OUTPUT tags
                   )
 
 add_custom_target(test_target ALL roundup)
+add_custom_target(format ALL clang-format -i *.c)

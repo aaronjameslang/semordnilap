@@ -14,4 +14,4 @@ add_custom_command(OUTPUT tags
                    DEPENDS *.c
                   )
 
-add_custom_target(test_target ALL roundup)
+add_custom_target(test_target ALL roundup DEPENDS semordnilap)

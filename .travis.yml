@@ -5,7 +5,14 @@ addons:
     packages:
       - libenchant-dev
 
-script: mkdir build && cd build && cmake .. && make
+script:
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+  - make
+  - make test
+  - make install
+  - ../test "$HOME/bin/semordnilap" # Check installed binary
 
 compiler:
   - clang

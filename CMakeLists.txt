@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 2.8.9)
 project (semordnilap)
-include_directories(/usr/include/enchant)
 add_executable(semordnilap semordnilap.c)
+install(TARGETS semordnilap DESTINATION bin)
+include_directories(/usr/include/enchant)
 target_link_libraries(semordnilap enchant)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")

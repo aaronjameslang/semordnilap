@@ -26,8 +26,6 @@ add_custom_target(test-install
                 ${PROJECT_SOURCE_DIR}/test ${CMAKE_INSTALL_PREFIX}/bin/semordnilap
                 )
 
-# Target should be called 'tags' but doesn't work
-add_custom_target(dev ALL DEPENDS tags)
 add_custom_command(OUTPUT        ${PROJECT_SOURCE_DIR}/tags
                    COMMAND ctags ${PROJECT_SOURCE_DIR}/*.c
                    DEPENDS       ${PROJECT_SOURCE_DIR}/*.c

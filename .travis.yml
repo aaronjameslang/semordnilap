@@ -8,11 +8,11 @@ addons:
 script:
   - mkdir build
   - cd build
-  - cmake ..
+  - cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
   - make
   - make test
   - make install
-  - ../test semordnilap # Check installed binary
+  - ../test "$HOME/bin/semordnilap" # Check installed binary
 
 compiler:
   - clang

@@ -3,22 +3,22 @@ set -eu
 
 semordnilap="$1"
 
-out="$(./semordnilap stressed)"
+out="$($1 stressed)"
 exit_code="$?"
 test "$out" = 'stressed -> desserts'
 test "$exit_code" -eq 0
 
-out="$(./semordnilap desserts)"
+out="$($1 desserts)"
 exit_code="$?"
 test "$out" = 'desserts -> stressed'
 test "$exit_code" -eq 0
 
-out="$(./semordnilap elppa)"
+out="$($1 elppa)"
 exit_code="$?"
 test "$out" = 'elppa -> apple'
 test "$exit_code" -eq 0
 
 exit_code=0
-out="$(./semordnilap apple)" || exit_code="$?"
+out="$($1 apple)" || exit_code="$?"
 test "$out" = 'apple -> elppa'
 test "$exit_code" -eq 1

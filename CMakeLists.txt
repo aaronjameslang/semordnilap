@@ -21,8 +21,6 @@ add_custom_target(always_be_testing ALL
                   DEPENDS ${PROJECT_BINARY_DIR}/semordnilap
                  )
 
-# Target should be called 'tags' but doesn't work
-add_custom_target(dev ALL DEPENDS tags)
 add_custom_command(OUTPUT        ${PROJECT_SOURCE_DIR}/tags
                    COMMAND ctags ${PROJECT_SOURCE_DIR}/*.c
                    DEPENDS       ${PROJECT_SOURCE_DIR}/*.c

@@ -12,7 +12,7 @@ script:
   - make
   - make test
   - make install
-  - ../test "$HOME/bin/semordnilap" # Check installed binary
+  - make test-install
 
 compiler:
   - clang

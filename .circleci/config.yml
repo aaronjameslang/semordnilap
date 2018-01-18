@@ -13,5 +13,6 @@ jobs:
           cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
           make
           make test
+          make check
           make install
-          make test-install
+          make installcheck

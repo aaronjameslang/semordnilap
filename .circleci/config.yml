@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run: |
+        mkdir build
+        cd build
+        cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+        make
+        make test
+        make install
+        make test-install

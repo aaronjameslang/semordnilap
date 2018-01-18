@@ -6,10 +6,10 @@ jobs:
     steps:
       - checkout
       - run: |
-        mkdir build
-        cd build
-        cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
-        make
-        make test
-        make install
-        make test-install
+          mkdir build
+          cd build
+          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          make
+          make test
+          make install
+          make test-install

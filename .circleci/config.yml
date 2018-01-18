@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - run: |
+          apt-get install -y cmake libenchant-dev
           mkdir build
           cd build
           cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..

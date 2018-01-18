@@ -17,14 +17,14 @@ endif()
 
 enable_testing()
 add_test(test ${PROJECT_SOURCE_DIR}/test ${PROJECT_BINARY_DIR}/semordnilap)
-add_custom_target(always_be_testing ALL
+add_custom_target(check ALL
                   ${PROJECT_SOURCE_DIR}/test ${PROJECT_BINARY_DIR}/semordnilap
                   DEPENDS ${PROJECT_BINARY_DIR}/semordnilap
                  )
 
-add_custom_target(test-install
-                ${PROJECT_SOURCE_DIR}/test ${CMAKE_INSTALL_PREFIX}/bin/semordnilap
-                )
+add_custom_target(installcheck
+                  ${PROJECT_SOURCE_DIR}/test ${CMAKE_INSTALL_PREFIX}/bin/semordnilap
+                 )
 
 # Target should be called 'tags' but doesn't work
 add_custom_target(dev ALL DEPENDS tags)

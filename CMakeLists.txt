@@ -26,4 +26,4 @@ add_custom_command(OUTPUT        ${PROJECT_SOURCE_DIR}/tags
                    DEPENDS       ${PROJECT_SOURCE_DIR}/*.c
                   )
 
-add_custom_target(format ALL clang-format -i ${PROJECT_SOURCE_DIR}/*.c)
+add_custom_target(format clang-format -i ${PROJECT_SOURCE_DIR}/*.c)

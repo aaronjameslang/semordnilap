@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian
+    steps:
+      - checkout
+      - run: |
+          apt-get update
+          apt-get install -y build-essential cmake libenchant-dev
+          mkdir build
+          cd build
+          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          make
+          make test
+          make check
+          make install
+          make installcheck

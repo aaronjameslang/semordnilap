@@ -5,6 +5,9 @@ addons:
     packages:
       - libenchant-dev
 
+before_install:
+  - test "$TRAVIS_OS_NAME" != 'osx' || brew install enchant
+
 script:
   - mkdir build
   - cd build

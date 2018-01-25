@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.9)
-project (semordnilap)
+project (semordnilap C)
 add_executable(semordnilap semordnilap.c)
 install(TARGETS semordnilap DESTINATION bin)
 include_directories(/usr/include/enchant /usr/local/include/enchant-2)

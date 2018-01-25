@@ -2,7 +2,7 @@ version: 2
 jobs:
   arch:
     docker:
-      - image: archlinux:base
+      - image: archlinux/base
     steps:
       - checkout
       - run: |

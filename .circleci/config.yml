@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  build:
-    macos:
-      xcode: "9.2.0"
+  debian:
+    docker:
+      - image: debain
     steps:
       - checkout
       - run: |
@@ -16,3 +16,24 @@ jobs:
           make check
           make install
           make installcheck
+  macos:
+    macos:
+      xcode: "9.2.0"
+    steps:
+      - checkout
+      - run: |
+          brew install enchant
+          mkdir build
+          cd build
+          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          make
+          make test
+          make check
+          make install
+          make installcheck
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - debian
+      - macos

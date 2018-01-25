@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          pacman --noconfirm --refresh --sync cmake enchant
+          pacman --noconfirm --refresh --sync cmake enchant make
           mkdir build
           cd build
           cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..

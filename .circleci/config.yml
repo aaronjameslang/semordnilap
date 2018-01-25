@@ -2,7 +2,7 @@ version: 2
 jobs:
   debian:
     docker:
-      - image: debain
+      - image: debian
     steps:
       - checkout
       - run: |
@@ -22,7 +22,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          brew install enchant
+          brew install cmake enchant
           mkdir build
           cd build
           cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..

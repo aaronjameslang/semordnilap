@@ -1,5 +1,20 @@
 version: 2
 jobs:
+  arch:
+    docker:
+      - image: archlinux:base
+    steps:
+      - checkout
+      - run: |
+          pacman -Sy enchant
+          mkdir build
+          cd build
+          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          make
+          make test
+          make check
+          make install
+          make installcheck
   debian:
     docker:
       - image: debian
@@ -8,6 +23,21 @@ jobs:
       - run: |
           apt-get update
           apt-get install -y build-essential cmake libenchant-dev
+          mkdir build
+          cd build
+          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          make
+          make test
+          make check
+          make install
+          make installcheck
+  fedora:
+    docker:
+      - image: fedora
+    steps:
+      - checkout
+      - run: |
+          dnf install enchant
           mkdir build
           cd build
           cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..

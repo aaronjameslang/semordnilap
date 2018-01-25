@@ -37,7 +37,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          dnf -y install cmake enchant
+          dnf -y install cmake enchant gcc
           mkdir build
           cd build
           cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..

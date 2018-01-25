@@ -65,5 +65,7 @@ workflows:
   version: 2
   workflow:
     jobs:
+      - arch
       - debian
+      - fedora
       - macos

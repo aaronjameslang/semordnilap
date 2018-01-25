@@ -1,0 +1,4 @@
+#! /bin/sh
+set -eu
+
+tests/test apple elppa 1

@@ -17,14 +17,17 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ansi")
 endif()
 
 enable_testing()
-add_test(test ${PROJECT_SOURCE_DIR}/test ${PROJECT_BINARY_DIR}/semordnilap)
+add_test(apple    ${PROJECT_SOURCE_DIR}/tests/apple   )
+add_test(rewot    ${PROJECT_SOURCE_DIR}/tests/rewot   )
+add_test(stressed ${PROJECT_SOURCE_DIR}/tests/stressed)
+add_test(xyz      ${PROJECT_SOURCE_DIR}/tests/xyz     )
 add_custom_target(check ALL
-                  ${PROJECT_SOURCE_DIR}/test ${PROJECT_BINARY_DIR}/semordnilap
+                  semordnilap=${PROJECT_BINARY_DIR}/semordnilap ${CMAKE_CTEST_COMMAND}
                   DEPENDS ${PROJECT_BINARY_DIR}/semordnilap
                  )
 
 add_custom_target(installcheck
-                  ${PROJECT_SOURCE_DIR}/test ${CMAKE_INSTALL_PREFIX}/bin/semordnilap
+                  semordnilap=${CMAKE_INSTALL_PREFIX}/bin/semordnilap ${CMAKE_CTEST_COMMAND}
                  )
 
 add_custom_command(OUTPUT        ${PROJECT_SOURCE_DIR}/tags

@@ -1,7 +1,10 @@
 #! /bin/sh
 set -eu
 
-semordnilap="${semordnilap:-semordnilap}"
+  if test -z "${semordnilap++}"
+then semordnilap="$(find . -name semordnilap | head -1)"
+fi
+
 word="$1"
 drow="$2"
 expected_stdout="$word -> $drow"

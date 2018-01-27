@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 2.8.9)
 project (semordnilap C)
+
+# Compilation
 add_executable(semordnilap semordnilap.c)
-install(TARGETS semordnilap DESTINATION bin)
 include_directories(/usr/include/enchant /usr/local/include/enchant-2)
 find_library(libenchant NAMES enchant enchant-2)
 target_link_libraries(semordnilap ${libenchant})
@@ -16,6 +17,11 @@ if(NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ansi")
 endif()
 
+# Installation
+install(TARGETS semordnilap   DESTINATION bin)
+install(FILES   semordnilap.1 DESTINATION share/man/man1)
+
+# Testing
 enable_testing()
 add_test(apple    ${PROJECT_SOURCE_DIR}/tests/apple   )
 add_test(rewot    ${PROJECT_SOURCE_DIR}/tests/rewot   )

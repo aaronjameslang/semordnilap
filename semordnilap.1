@@ -1,0 +1,25 @@
+.TH SEMORDNILAP 1
+.SH NAME
+semordnilap \- verify that a reversed string is a human word
+.SH SYNOPSIS
+.B semordnilap
+.IR word
+.SH DESCRIPTION
+.B semordnilap
+reverses a string and spell-checks it.
+The original and reversed strings are printed,
+and the spell-correctness is indicating by exit code.
+.SH EXIT STATUS
+.TP
+.B 0
+Word is a semordnilap
+.TP
+.B 1
+Word is not a semordnilap
+.SH EXAMPLES
+.nf
+.RS
+semordnila stressed
+stressed -> desserts
+.RE
+.fi

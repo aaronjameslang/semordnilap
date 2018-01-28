@@ -9,7 +9,7 @@ jobs:
           pacman --noconfirm --refresh --sync cmake clang enchant make
           mkdir build
           cd build
-          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          cmake ..
           make
           make test
           make check
@@ -26,7 +26,7 @@ jobs:
           apt-get install -y build-essential cmake libenchant-dev
           mkdir build
           cd build
-          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          cmake ..
           make
           make test
           make check
@@ -42,7 +42,7 @@ jobs:
           dnf -y install cmake enchant-devel findutils gcc
           mkdir build
           cd build
-          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          cmake ..
           make
           make test
           make check
@@ -58,7 +58,7 @@ jobs:
           brew install cmake enchant
           mkdir build
           cd build
-          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          cmake ..
           make
           make test
           make check

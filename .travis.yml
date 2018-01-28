@@ -8,15 +8,7 @@ addons:
 before_install:
   - test "$TRAVIS_OS_NAME" != 'osx' || brew install enchant
 
-script:
-  - mkdir build
-  - cd build
-  - cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
-  - make
-  - make test
-  - make check
-  - make install
-  - make installcheck
+script: .ci
 
 compiler:
   - clang

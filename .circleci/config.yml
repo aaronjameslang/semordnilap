@@ -14,21 +14,21 @@ jobs:
       - checkout
       - run: apt-get update
       - run: apt-get install -y build-essential cmake libenchant-dev man
-      - run: .ci
+      - run: ./.ci
   fedora:
     docker:
       - image: fedora
     steps:
       - checkout
       - run: dnf -y install cmake enchant-devel findutils gcc man
-      - run: .ci
+      - run: ./.ci
   macos:
     macos:
       xcode: "9.2.0"
     steps:
       - checkout
       - run: brew install cmake enchant
-      - run: .ci
+      - run: ./.ci
 workflows:
   version: 2
   workflow:

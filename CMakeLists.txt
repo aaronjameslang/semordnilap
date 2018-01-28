@@ -27,15 +27,35 @@ add_test(apple    ${PROJECT_SOURCE_DIR}/tests/apple   )
 add_test(rewot    ${PROJECT_SOURCE_DIR}/tests/rewot   )
 add_test(stressed ${PROJECT_SOURCE_DIR}/tests/stressed)
 add_test(xyz      ${PROJECT_SOURCE_DIR}/tests/xyz     )
+add_test(man  man ${PROJECT_SOURCE_DIR}/semordnilap.1 )
+
+add_test(NAME installed_man
+         COMMAND man ${CMAKE_INSTALL_PREFIX}/share/man/man1/semordnilap.1
+         CONFIGURATIONS installcheck
+        )
+
+add_test(NAME path_man
+         COMMAND man semordnilap
+         CONFIGURATIONS pathcheck
+        )
+add_test(NAME path_man_1
+         COMMAND man 1 semordnilap
+         CONFIGURATIONS pathcheck
+        )
+
 add_custom_target(check ALL
                   semordnilap=${PROJECT_BINARY_DIR}/semordnilap ${CMAKE_CTEST_COMMAND}
                   DEPENDS ${PROJECT_BINARY_DIR}/semordnilap
                  )
 
 add_custom_target(installcheck
-                  semordnilap=${CMAKE_INSTALL_PREFIX}/bin/semordnilap ${CMAKE_CTEST_COMMAND}
+                  semordnilap=${CMAKE_INSTALL_PREFIX}/bin/semordnilap ${CMAKE_CTEST_COMMAND} -C installcheck
+                 )
+add_custom_target(pathcheck
+                  semordnilap=semordnilap ${CMAKE_CTEST_COMMAND} -C pathcheck
                  )
 
+# Development
 add_custom_command(OUTPUT        ${PROJECT_SOURCE_DIR}/tags
                    COMMAND ctags ${PROJECT_SOURCE_DIR}/*.c
                    DEPENDS       ${PROJECT_SOURCE_DIR}/*.c

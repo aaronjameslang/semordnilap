@@ -15,6 +15,7 @@ jobs:
           make check
           make install
           make installcheck
+          make pathcheck
   debian:
     docker:
       - image: debian
@@ -31,6 +32,7 @@ jobs:
           make check
           make install
           make installcheck
+          make pathcheck
   fedora:
     docker:
       - image: fedora
@@ -46,6 +48,7 @@ jobs:
           make check
           make install
           make installcheck
+          make pathcheck
   macos:
     macos:
       xcode: "9.2.0"
@@ -61,6 +64,7 @@ jobs:
           make check
           make install
           make installcheck
+          make pathcheck
 workflows:
   version: 2
   workflow:

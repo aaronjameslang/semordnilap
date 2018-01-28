@@ -17,7 +17,6 @@ script:
   - make check
   - make install
   - make installcheck
-  - make pathcheck
 
 compiler:
   - clang

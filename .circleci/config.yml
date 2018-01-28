@@ -23,7 +23,7 @@ jobs:
       - checkout
       - run: |
           apt-get update
-          apt-get install -y build-essential cmake libenchant-dev
+          apt-get install -y build-essential cmake libenchant-dev man
           mkdir build
           cd build
           cmake ..
@@ -39,7 +39,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          dnf -y install cmake enchant-devel findutils gcc
+          dnf -y install cmake enchant-devel findutils gcc man
           mkdir build
           cd build
           cmake ..

@@ -4,11 +4,10 @@ set -eux
 mkdir build
 cd build
 
-#if test 0 -eq $EUID
-#then cmake ..
-#else cmake .. -DCMAKE_INSTALL_PREFIX="$HOME"
-#fi
-cmake ..
+if touch /
+then cmake ..
+else cmake .. -DCMAKE_INSTALL_PREFIX="$HOME"
+fi
 
 make
 make test
@@ -16,10 +15,15 @@ make check
 make install
 make installcheck
 
-# if test 0 -eq $EUID
-# then make pathcheck
-# fi
+if touch /
+then make pathcheck
+fi
 
-command -v clang-format && make format
-git diff --exit-code
-test -z "$(git ls-files --exclude-standard --directory --other)"
+if command -v clang-format ; then
+  make format
+fi
+
+if command -v git ; then
+  git diff --exit-code
+  test -z "$(git ls-files --exclude-standard --directory --other)"
+fi

@@ -20,6 +20,6 @@ make installcheck
 # then make pathcheck
 # fi
 
-make format
+command -v clang-format && make format
 git diff --exit-code
 test -z "$(git ls-files --exclude-standard --directory --other)"

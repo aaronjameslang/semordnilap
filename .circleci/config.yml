@@ -9,12 +9,13 @@ jobs:
           pacman --noconfirm --refresh --sync cmake clang enchant make
           mkdir build
           cd build
-          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          cmake ..
           make
           make test
           make check
           make install
           make installcheck
+          make pathcheck
   debian:
     docker:
       - image: debian
@@ -22,30 +23,32 @@ jobs:
       - checkout
       - run: |
           apt-get update
-          apt-get install -y build-essential cmake libenchant-dev
+          apt-get install -y build-essential cmake libenchant-dev man
           mkdir build
           cd build
-          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          cmake ..
           make
           make test
           make check
           make install
           make installcheck
+          make pathcheck
   fedora:
     docker:
       - image: fedora
     steps:
       - checkout
       - run: |
-          dnf -y install cmake enchant-devel findutils gcc
+          dnf -y install cmake enchant-devel findutils gcc man
           mkdir build
           cd build
-          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          cmake ..
           make
           make test
           make check
           make install
           make installcheck
+          make pathcheck
   macos:
     macos:
       xcode: "9.2.0"
@@ -55,12 +58,13 @@ jobs:
           brew install cmake enchant
           mkdir build
           cd build
-          cmake -DCMAKE_INSTALL_PREFIX="$HOME" ..
+          cmake ..
           make
           make test
           make check
           make install
           make installcheck
+          make pathcheck
 workflows:
   version: 2
   workflow:

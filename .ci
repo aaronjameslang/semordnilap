@@ -1,0 +1,29 @@
+#! /bin/sh
+set -eux
+
+mkdir build
+cd build
+
+if touch /
+then cmake ..
+else cmake .. -DCMAKE_INSTALL_PREFIX="$HOME"
+fi
+
+make
+make test
+make check
+make install
+make installcheck
+
+if touch /
+then make pathcheck
+fi
+
+if command -v clang-format ; then
+  make format
+fi
+
+if command -v git ; then
+  git diff --exit-code
+  test -z "$(git ls-files --exclude-standard --directory --other)"
+fi

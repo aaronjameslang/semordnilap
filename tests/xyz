@@ -1,5 +1,4 @@
 #! /bin/sh
 set -eu
 
-cd "$(dirname $0)/.."
-tests/test xyz zyx 1
+"$(dirname $0)/test" xyz zyx 1

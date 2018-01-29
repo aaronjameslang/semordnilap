@@ -1,13 +1,17 @@
 #! /bin/sh
 set -eux
 
-mkdir build
-cd build
+src_dir="$PWD"
+build_dir="$(mktemp -d)"
+mkdir -p "$build_dir"
+cd "$build_dir"
 
 if touch /
-then cmake ..
-else cmake .. -DCMAKE_INSTALL_PREFIX="$HOME"
+then cmake "$src_dir"
+else cmake "$src_dir" -DCMAKE_INSTALL_PREFIX="$HOME"
 fi
+
+export CTEST_OUTPUT_ON_FAILURE=1
 
 make
 make test
@@ -27,3 +31,6 @@ if command -v git ; then
   git diff --exit-code
   test -z "$(git ls-files --exclude-standard --directory --other)"
 fi
+
+cd
+rm -rf "$build_dir"

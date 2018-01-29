@@ -1,5 +1,5 @@
 #! /bin/sh
-set -eu
+set -eux
 
   if test -z "${semordnilap++}"
 then semordnilap="$(find . -name semordnilap | head -1)"

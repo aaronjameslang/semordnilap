@@ -2,4 +2,4 @@
 set -eu
 
 cd "$(dirname $0)/.."
-tests/test xyz zyx 1
+tests/test xyz zyx 12

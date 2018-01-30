@@ -28,10 +28,14 @@ int spell_check(const char *const word, const char *const language) {
 
 int calculate_exit_code(const int word_check, const int drow_check) {
   int exit_code = 0;
-  if (word_check < 0) exit_code |= 1;
-  if (word_check > 0) exit_code |= 8;
-  if (drow_check < 0) exit_code |= 1;
-  if (drow_check > 0) exit_code |= 4;
+  if (word_check < 0)
+    exit_code |= 1;
+  if (word_check > 0)
+    exit_code |= 8;
+  if (drow_check < 0)
+    exit_code |= 1;
+  if (drow_check > 0)
+    exit_code |= 4;
   return exit_code;
 }
 

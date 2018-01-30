@@ -26,12 +26,27 @@ int spell_check(const char *const word, const char *const language) {
   return check;
 }
 
+int calculate_exit_code(const int word_check, const int drow_check) {
+  int exit_code = 0;
+  if (word_check < 0)
+    exit_code |= 1;
+  if (word_check > 0)
+    exit_code |= 8;
+  if (drow_check < 0)
+    exit_code |= 1;
+  if (drow_check > 0)
+    exit_code |= 4;
+  return exit_code;
+}
+
 int main(int argc, char **argv) {
-  /* TODO Spell check word? */
   const char *const word = argv[1];
   const char *const drow = strrev(word);
-  const int check = spell_check(drow, "en");
+  const int word_check = spell_check(word, "en");
+  const int drow_check = spell_check(drow, "en");
+  const int exit_code = calculate_exit_code(word_check, drow_check);
   (void)argc;
-  printf("%s -> %s\n", word, drow);
-  exit(check);
+  printf("%s%s -> %s%s\n", word_check == 0 ? "" : "*", word,
+         drow_check == 0 ? "" : "*", drow);
+  exit(exit_code);
 }

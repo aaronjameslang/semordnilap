@@ -2,4 +2,4 @@
 set -eu
 
 cd "$(dirname $0)/.."
-tests/test apple elppa 1
+tests/test apple 'apple -> *elppa' 4

@@ -27,10 +27,10 @@ if command -v clang-format ; then
   make format
 fi
 
+cd "$src_dir"
+rm -rf "$build_dir"
+
 if command -v git ; then
   git diff --exit-code
   test -z "$(git ls-files --exclude-standard --directory --other)"
 fi
-
-cd
-rm -rf "$build_dir"

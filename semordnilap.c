@@ -2,29 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <enchant.h>
-
-char *strrev(const char *const src) {
-  const int len = strlen(src);
-  char *const dest = malloc(len + 1);
-  int i = 0;
-
-  for (; i < len; i += 1) {
-    dest[len - i - 1] = src[i];
-  }
-
-  dest[len] = '\0';
-
-  return dest;
-}
-
-int spell_check(const char *const word, const char *const language) {
-  EnchantBroker *enchantBroker = enchant_broker_init();
-  EnchantDict *enchantDict =
-      enchant_broker_request_dict(enchantBroker, language);
-  const int check = enchant_dict_check(enchantDict, word, -1);
-  return check;
-}
+#include "libsemordnilap.c"
 
 int calculate_exit_code(const int word_check, const int drow_check) {
   int exit_code = 0;
@@ -37,20 +15,6 @@ int calculate_exit_code(const int word_check, const int drow_check) {
   if (drow_check > 0)
     exit_code |= 4;
   return exit_code;
-}
-
-struct Result {
-  const char *drow;
-  int word_check;
-  int drow_check;
-};
-
-struct Result calculateResult(const char *const word) {
-  struct Result result;
-  result.drow = strrev(word);
-  result.word_check = spell_check(word, "en");
-  result.drow_check = spell_check(result.drow, "en");
-  return result;
 }
 
 void printfWordAndResult(const char *const word, struct Result result) {

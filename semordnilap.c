@@ -39,14 +39,32 @@ int calculate_exit_code(const int word_check, const int drow_check) {
   return exit_code;
 }
 
+struct Result {
+  const char * drow;
+  int word_check;
+  int drow_check;
+};
+
+struct Result calculateResult(const char *const word) {
+  struct Result result;
+  result.drow = strrev(word);
+  result.word_check = spell_check(word, "en");
+  result.drow_check = spell_check(result.drow, "en");
+  return result;
+}
+
+void printfWordAndResult(const char * const word, struct Result result)
+{
+  printf("%s%s -> %s%s\n", result.word_check == 0 ? "" : "*", word,
+         result.drow_check == 0 ? "" : "*", result.drow);
+}
+
+
 int main(int argc, char **argv) {
   const char *const word = argv[1];
-  const char *const drow = strrev(word);
-  const int word_check = spell_check(word, "en");
-  const int drow_check = spell_check(drow, "en");
-  const int exit_code = calculate_exit_code(word_check, drow_check);
+  struct Result result = calculateResult(word);
+  const int exit_code = calculate_exit_code(result.word_check, result.drow_check);
   (void)argc;
-  printf("%s%s -> %s%s\n", word_check == 0 ? "" : "*", word,
-         drow_check == 0 ? "" : "*", drow);
+  printfWordAndResult(word, result);
   exit(exit_code);
 }

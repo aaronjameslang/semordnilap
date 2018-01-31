@@ -1,0 +1,11 @@
+FROM fedora
+
+RUN useradd -m me
+WORKDIR /home/me/project
+
+RUN dnf -y install cmake enchant-devel findutils gcc man
+
+USER me
+CMD ./.ci
+
+COPY . /home/me/project

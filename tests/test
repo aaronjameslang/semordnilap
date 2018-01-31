@@ -5,13 +5,12 @@ set -eux
 then semordnilap="$(find . -name semordnilap | head -1)"
 fi
 
-word="$1"
-drow="$2"
-expected_stdout="$word -> $drow"
+input="$1"
+expected_stdout="$2"
 expected_exit_code="$3"
 
 actual_exit_code=0
-actual_stdout="$($semordnilap $word)" ||
+actual_stdout="$($semordnilap $input)" ||
 actual_exit_code="$?"
 test "$expected_stdout" = "$actual_stdout"
 test "$expected_exit_code" -eq "$actual_exit_code"

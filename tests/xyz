@@ -1,4 +1,4 @@
 #! /bin/sh
 set -eu
 
-"$(dirname $0)/test" xyz zyx 1
+"$(dirname $0)/test" xyz '*xyz -> *zyx' 12

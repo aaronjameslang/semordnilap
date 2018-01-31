@@ -1,4 +1,4 @@
 #! /bin/sh
 set -eu
 
-"$(dirname $0)/test" stressed desserts 0
+"$(dirname $0)/test" stressed 'stressed -> desserts' 0

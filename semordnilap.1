@@ -8,18 +8,28 @@ semordnilap \- verify that a reversed string is a human word
 .B semordnilap
 reverses a string and spell-checks it.
 The original and reversed strings are printed,
-and the spell-correctness is indicating by exit code.
+and any incorrect words are prepended with an asterisk.
+Correctness is additionally indicated by exit code.
 .SH EXIT STATUS
 .TP
 .B 0
-Word is a semordnilap
+Word is a semordnilap, and correctly spelled
 .TP
-.B 1
-Word is not a semordnilap
+.B 4
+Word is not a semordnilap, but is correctly spelled
+.TP
+.B 8
+Word is a semordnilap, but is not correctly spelled
+.TP
+.B 12
+Word is neither a semordnilap, nor correctly spelled
 .SH EXAMPLES
 .nf
 .RS
-semordnila stressed
+semordnilap stressed
 stressed -> desserts
+.PP
+semordnilap dinner
+dinner -> *rennid
 .RE
 .fi

@@ -1,4 +1,4 @@
 #! /bin/sh
 set -eu
 
-"$(dirname $0)/test" rewot tower 0
+"$(dirname $0)/test" rewot '*rewot -> tower' 8

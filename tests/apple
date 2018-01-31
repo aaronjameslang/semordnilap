@@ -1,4 +1,4 @@
 #! /bin/sh
 set -eu
 
-"$(dirname $0)/test" apple elppa 1
+"$(dirname $0)/test" apple 'apple -> *elppa' 4

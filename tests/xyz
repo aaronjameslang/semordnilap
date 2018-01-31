@@ -1,5 +1,4 @@
 #! /bin/sh
 set -eu
 
-cd "$(dirname $0)/.."
-tests/test xyz '*xyz -> *zyx' 12
+"$(dirname $0)/test" xyz '*xyz -> *zyx' 12

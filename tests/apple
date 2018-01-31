@@ -1,5 +1,4 @@
 #! /bin/sh
 set -eu
 
-cd "$(dirname $0)/.."
-tests/test apple 'apple -> *elppa' 4
+"$(dirname $0)/test" apple 'apple -> *elppa' 4

@@ -1,0 +1,12 @@
+FROM debian
+
+RUN useradd -m me
+WORKDIR /home/me/project
+
+RUN apt-get update
+RUN apt-get -y install build-essential cmake libenchant-dev man
+
+USER me
+CMD ./.ci
+
+COPY . /home/me/project

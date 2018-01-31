@@ -1,0 +1,10 @@
+version: '3'
+services:
+  debian:
+    build:
+      context: .
+      dockerfile: Dockerfile.debian
+  fedora:
+    build:
+      context: .
+      dockerfile: Dockerfile.fedora

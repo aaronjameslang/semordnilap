@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "libsemordnilap.c"
+#include "libsemordnilap.h"
 
 int calculate_exit_code(const int word_check, const int drow_check) {
   int exit_code = 0;

@@ -4,10 +4,13 @@ project (semordnilap C)
 # Compilation
 add_executable(semordnilap semordnilap.c)
 add_library(libsemordnilap libsemordnilap.c)
+add_library(libsemordnilas SHARED libsemordnilap.c)
 set_target_properties(libsemordnilap PROPERTIES OUTPUT_NAME semordnilap)
+set_target_properties(libsemordnilas PROPERTIES OUTPUT_NAME semordnilap)
 include_directories(/usr/include/enchant /usr/local/include/enchant-2)
 find_library(libenchant NAMES enchant enchant-2)
 target_link_libraries(semordnilap ${libenchant})
+target_link_libraries(libsemordnilas ${libenchant})
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")

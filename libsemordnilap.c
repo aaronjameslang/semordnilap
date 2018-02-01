@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include <enchant.h>
+#include "libsemordnilap.h"
 
 char *strrev(const char *const src) {
   const int len = strlen(src);
@@ -25,12 +26,6 @@ int spell_check(const char *const word, const char *const language) {
   const int check = enchant_dict_check(enchantDict, word, -1);
   return check;
 }
-
-struct Result {
-  const char *drow;
-  int word_check;
-  int drow_check;
-};
 
 struct Result calculateResult(const char *const word) {
   struct Result result;

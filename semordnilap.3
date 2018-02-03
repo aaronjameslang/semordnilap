@@ -1,0 +1,40 @@
+.TH SEMORDNILAP 3
+.SH NAME
+semordnilap \- verify that a reversed string is a human word
+.SH SYNOPSIS
+.B #include <libsemordnilap.h>
+.PP
+.B struct Result calculateResult(const char *const
+.IB word );
+.SH DESCRIPTION
+Reverses the given word and returns it along
+with spell-check results for both strings
+.SH RETURN VALUE
+.SS Result
+.RS
+.NF
+  struct Result {
+    const char *drow;
+    int word_check;
+    int drow_check;
+  };
+.FI
+.RE
+.TP
+.B drow
+is the reversed word
+.TP
+.B word_check, drow_check
+are the spell check results for the original word and the
+reverse, respectively
+.SS *_check
+.TP
+.B = 0
+indicates a correct spelling
+.TP
+.B > 0
+indicates an incorrect spelling
+.TP
+.B < 0
+indicates an error
+

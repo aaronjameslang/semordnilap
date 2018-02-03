@@ -4,7 +4,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.debian
+  debian.root:
+    build:
+      context: .
+      dockerfile: Dockerfile.debian.root
   fedora:
     build:
       context: .
       dockerfile: Dockerfile.fedora
+  fedora.root:
+    build:
+      context: .
+      dockerfile: Dockerfile.fedora.root

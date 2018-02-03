@@ -27,6 +27,7 @@ install(TARGETS semordnilap   DESTINATION bin)
 install(TARGETS semordnilib   DESTINATION lib)
 install(FILES libsemordnilap.h DESTINATION include)
 install(FILES   semordnilap.1 DESTINATION share/man/man1)
+install(FILES   semordnilap.3 DESTINATION share/man/man3)
 
 # Testing
 enable_testing()
@@ -34,10 +35,15 @@ add_test(apple    ${PROJECT_SOURCE_DIR}/tests/apple   )
 add_test(rewot    ${PROJECT_SOURCE_DIR}/tests/rewot   )
 add_test(stressed ${PROJECT_SOURCE_DIR}/tests/stressed)
 add_test(xyz      ${PROJECT_SOURCE_DIR}/tests/xyz     )
-add_test(man  man ${PROJECT_SOURCE_DIR}/semordnilap.1 )
+add_test(man1 man ${PROJECT_SOURCE_DIR}/semordnilap.1 )
+add_test(man3 man ${PROJECT_SOURCE_DIR}/semordnilap.3 )
 
-add_test(NAME installed_man
+add_test(NAME installed_man_1
          COMMAND man ${CMAKE_INSTALL_PREFIX}/share/man/man1/semordnilap.1
+         CONFIGURATIONS installcheck
+        )
+add_test(NAME installed_man_3
+         COMMAND man ${CMAKE_INSTALL_PREFIX}/share/man/man3/semordnilap.3
          CONFIGURATIONS installcheck
         )
 
@@ -47,6 +53,10 @@ add_test(NAME path_man
         )
 add_test(NAME path_man_1
          COMMAND man 1 semordnilap
+         CONFIGURATIONS pathcheck
+        )
+add_test(NAME path_man_3
+         COMMAND man 3 semordnilap
          CONFIGURATIONS pathcheck
         )
 

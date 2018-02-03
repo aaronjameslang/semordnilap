@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <enchant.h>
 #include "libsemordnilap.h"
+#include <enchant.h>
 
 char *strrev(const char *const src) {
   const int len = strlen(src);

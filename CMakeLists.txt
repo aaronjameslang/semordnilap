@@ -25,6 +25,7 @@ endif()
 # Installation
 install(TARGETS semordnilap   DESTINATION bin)
 install(TARGETS semordnilib   DESTINATION lib)
+install(FILES libsemordnilap.h DESTINATION include)
 install(FILES   semordnilap.1 DESTINATION share/man/man1)
 
 # Testing

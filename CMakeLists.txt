@@ -62,7 +62,11 @@ add_custom_target(pathcheck
                   semordnilap=semordnilap ${CMAKE_CTEST_COMMAND} -C pathcheck
                  )
 
-add_custom_target(crosscheck docker-compose up --build)
+add_custom_target(crosscheck
+                  COMMAND docker-compose build
+                  COMMAND docker-compose up --build
+                  COMMAND docker-compose ps
+                 )
 
 # Development
 add_custom_command(OUTPUT        ${PROJECT_SOURCE_DIR}/tags
